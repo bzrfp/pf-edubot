@@ -1,6 +1,6 @@
-#Código do exemplo adaptado com a preferência esquerda > centro > direita e adaptado para a meia volta em pontos sem saída 
-#Supostamente deve ser capaz de explorar o labirinto inteiro e detectar 1 objeto com tamanho definido 
-#Ainda falta adaptar pra voltar pro ínicio assim que pegar o objeto
+//Código do exemplo adaptado com a preferência esquerda > centro > direita e adaptado para a meia volta em pontos sem saída 
+//Supostamente deve ser capaz de explorar o labirinto inteiro e detectar 1 objeto com tamanho definido 
+//Ainda falta adaptar pra voltar pro ínicio assim que pegar o objeto
 
 #include <Sparki.h> // include the sparki library
 
