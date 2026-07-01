@@ -1,7 +1,6 @@
 #include <Sparki.h> 
 
-void setup() 
-{
+void setup() {
 }
 
 void loop() {
