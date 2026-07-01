@@ -17,7 +17,7 @@ void loop() {
   }
 
 
-  else if (lineCenter < lim) 
+  else if ( lineCenter < lim ) 
   {  
     sparki.moveForward(); 
   }
