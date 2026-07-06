@@ -1,5 +1,4 @@
-//falta fazer o caso pro segundo ponto sem saída (acho que só com as prioridades ele entra no loop)
-//falta abrir as garras quando achar o objeto 
+//falta fechar a garra quando encontra o objeto
 
 #include <Sparki.h>
 
@@ -68,6 +67,24 @@ void loop() {
       }
       
     }
+    
+    else if (pontoSemSaida == 2)
+    {
+      if ( lineCenter < lim )
+      {
+        sparki.moveForward();
+      }
+      else if (lineRight < lim)
+      {
+        sparki.moveRight();
+      }
+      else if ( lineLeft < lim )
+      {
+        sparki.moveLeft();
+      }
+      
+    }
+    
     else if (pontoSemSaida == 3);
     {
       if ( lineCenter < lim )
