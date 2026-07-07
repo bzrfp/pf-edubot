@@ -39,6 +39,10 @@ void loop() {
   {
     pontoSemSaida++;
   }
+
+  sparki.clearLCD();
+  sparki.println(pontoSemSaida);
+  sparki.updateLCD();
   
   delay(100);
 }
