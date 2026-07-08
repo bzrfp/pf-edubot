@@ -25,17 +25,16 @@ void loop() {
   delay(9000);
   sparki.moveRight(90);
 
-}
-sparki.moveFoward();
-delay(2000);
-sparki.moveLeft(90);
-if (lineCenter > lim){
-sparki.moveFoward();
-}
-else{
-sparki.stop();
-sparki.gripperOpen();
-delay(1300);
 
+  sparki.moveFoward();
+  delay(2000);
+  sparki.moveLeft(90);
 
-
+  if (lineCenter > lim)  {
+    sparki.moveFoward();
+  }
+  else  {
+  sparki.stop();
+  sparki.gripperOpen();
+  delay(1300);
+  }
