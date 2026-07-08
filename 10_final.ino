@@ -9,6 +9,7 @@ void setup() {
   
   sparki.gripperOpen();
   delay(5000);
+  sparki.gripperStop();
 }
 
 void loop() {
@@ -85,7 +86,7 @@ void loop() {
       
     }
     
-    else if (pontoSemSaida == 3);
+    else if (pontoSemSaida == 3)
     {
       if ( lineCenter < lim )
       {
