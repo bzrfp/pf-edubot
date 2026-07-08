@@ -1,18 +1,21 @@
-//falta fechar a garra quando encontra o objeto
-
 #include <Sparki.h>
 
 int  pontoSemSaida = 0;
 bool achouObjeto = false; 
+bool temObjeto = false;
+int esquerdaCasoDois = 0;
 
 void setup() {
-  
+
+  sparki.servo(SERVO_CENTER);
   sparki.gripperOpen();
   delay(5000);
   sparki.gripperStop();
+
 }
 
 void loop() {
+
   int lim = 500;
   int lineLeft   = sparki.lineLeft();
   int lineCenter = sparki.lineCenter();
@@ -20,8 +23,13 @@ void loop() {
   int cm = sparki.ping();
 
   bool achouLinha = true;
+
+  if (cm < 10 && cm > -1) // verifica se tem um objeto ao fim do caminho que o sparki entrou 
+  {
+    temObjeto = true;
+  }
   
-  if (!achouObjeto)
+  if (!achouObjeto) // caminho de ida (antes da captura do objeto)
   
   {
 
@@ -37,24 +45,34 @@ void loop() {
     {
       sparki.moveRight();
     }
-    else
+    else // ponto sem saída
     {
-      // ponto sem saída
+      if (temObjeto)
+        {
+        sparki.gripperClose();
+        delay(5000);
+        sparki.gripperStop();
+        achouObjeto = true;
+        }
       achouLinha = false;
       sparki.moveRight(180);
     }
 
-    //contador
+    //contador (para que idenfiquemos em que saída o sparki encontrou o objeto)
     if ( !achouLinha )
     {
       pontoSemSaida++;
+      sparki.clearLCD();
+      sparki.print(pontoSemSaida);
+      sparki.updateLCD();
+
     }
   
     delay(100);
     
   }
   
-  else
+  else // caminho de volta 
   {
     if ( pontoSemSaida == 1 ) 
     {
@@ -71,19 +89,29 @@ void loop() {
     
     else if (pontoSemSaida == 2)
     {
-      if ( lineCenter < lim )
-      {
-        sparki.moveForward();
-      }
-      else if (lineRight < lim)
+
+      if (lineRight < lim)
       {
         sparki.moveRight();
       }
+
       else if ( lineLeft < lim )
       {
-        sparki.moveLeft();
+        esquerdaCasoDois++; 
+        if (esquerdaCasoDois == 2) //evita a entrada no loop caso o objeto seja capturado na 2a saída
+        {
+          sparki.moveLeft();
+        }
+        else
+        {
+          sparki.moveForward();
+        }
+          
       }
-      
+      else if ( lineCenter < lim )
+      {
+        sparki.moveForward();
+      }    
     }
     
     else if (pontoSemSaida == 3)
