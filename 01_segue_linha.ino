@@ -18,7 +18,7 @@ void loop() {
   else if ( lineCenter < lim ) 
   {  
     sparki.moveForward();
-    delay(100)
+    delay(100);
   }
 
   else if ( lineRight < lim )
