@@ -1,5 +1,3 @@
-//é bom printar essa variavel no LCD pra ver se a contagem tá certa
-
 #include <Sparki.h>
 
 int  pontoSemSaida = 0;  
