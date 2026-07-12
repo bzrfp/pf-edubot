@@ -143,13 +143,20 @@ void loop() {
     
     else if (pontoSemSaida == 3)
     {
-      if ( lineCenter < lim )
+
+      if ( lineLeft < lim )
+      {
+        sparki.moveLeft();
+      }
+      
+      else if ( lineCenter < lim )
       {
         sparki.moveForward();
       }
-      else if ( lineLeft < lim )
+
+      else if (lineRight < lim)
       {
-        sparki.moveLeft();
+        sparki.moveRight();
       }
       
       else if ( lineRight > lim && lineLeft > lim && lineCenter > lim)//voltou pro ponto de origem
