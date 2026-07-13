@@ -128,30 +128,25 @@ void loop() {
     
     else if (pontoSemSaida == 3)
     {
-
       if ( lineLeft < lim )
       {
         sparki.moveLeft();
       }
-      
       else if ( lineCenter < lim )
       {
         sparki.moveForward();
       }
-
       else if (lineRight < lim)
       {
         sparki.moveRight();
       }
-      
       else if ( lineRight > lim && lineLeft > lim && lineCenter > lim)//voltou pro ponto de origem
       { 
         sparki.moveStop();
         sparki.gripperOpen();
         delay(5000);
         sparki.gripperStop();
-      }
-      
+      } 
     }
     
   }  
