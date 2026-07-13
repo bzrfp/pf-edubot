@@ -3,7 +3,6 @@
 int  pontoSemSaida = 0;
 bool achouObjeto = false; 
 bool temObjeto = false;
-int esquerdaCasoDois = 0;
 
 void setup() {
 
@@ -34,9 +33,7 @@ void loop() {
   }
   
   if (!achouObjeto) // caminho de ida (antes da captura do objeto)
-  
   {
-
     if ( lineLeft < lim )
     {
       sparki.moveLeft();
@@ -71,7 +68,6 @@ void loop() {
       sparki.clearLCD();
       sparki.print(pontoSemSaida);
       sparki.updateLCD();
-
     }
   
     delay(100);
@@ -91,7 +87,6 @@ void loop() {
       {
         sparki.moveForward();
       }
-      
       else if ( lineRight > lim && lineLeft > lim && lineCenter > lim)//voltou pro ponto de origem
       { 
         sparki.moveStop();
@@ -99,46 +94,36 @@ void loop() {
         delay(5000);
         sparki.gripperStop();
       }
-      
     }
     
     else if (pontoSemSaida == 2)
     {
-
-      if (lineRight < lim)
+      if (lineRight < lim && lineLeft < lim) // logo apos capturar o objeto, evita o loop
       {
-        sparki.moveRight();
+         sparki.moveForward(5); // medimos experimentalmente para que o sparki fique centralizado apos a curva
+         sparki.moveRight(90);
+         sparki.moveForward(10);
       }
-
       else if ( lineLeft < lim )
       {
-        esquerdaCasoDois++; //desse jeito esta contando os milisegundo, tem que implementar o bool igual pro primeiro contador
-        sparki.clearLCD();
-        sparki.print(esquerdaCasoDois);
-        sparki.updateLCD(); 
-        if (esquerdaCasoDois == 2) //evita a entrada no loop caso o objeto seja capturado na 2a saída
-        {
-          sparki.moveLeft();
-        }
-        else
-        {
-          sparki.moveForward();
-        }
-          
+        sparki.moveForward(5); // tambem para ajudar na centralizacao
+        sparki.moveLeft(90);     
       }
       else if ( lineCenter < lim )
       {
         sparki.moveForward();
       }    
-
+      else if (lineRight < lim)
+      {
+        sparki.moveRight();
+      }
       else if ( lineRight > lim && lineLeft > lim && lineCenter > lim)//voltou pro ponto de origem
       { 
-      sparki.moveStop();
-      sparki.gripperOpen();
-      delay(5000);
-      sparki.gripperStop();
+        sparki.moveStop();
+        sparki.gripperOpen();
+        delay(5000);
+        sparki.gripperStop();
       }
-
     }
     
     else if (pontoSemSaida == 3)
