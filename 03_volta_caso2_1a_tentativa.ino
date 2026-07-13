@@ -1,3 +1,5 @@
+//descartamos essa ideia pois eh muito dificil manter o sparki na linha estipulando previamente uma quantidade de cm pra ele se mover
+
 #include <Sparki.h> 
 
 void setup() {
