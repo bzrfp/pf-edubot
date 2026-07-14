@@ -79,7 +79,11 @@ void loop() {
 
     if ( pontoSemSaida == 1 ) 
     {
-      if ( lineRight < lim )
+      if ( lineLeft < lim)
+      {
+        sparki.moveLeft();
+      }
+      else if ( lineRight < lim )
       {
         sparki.moveRight();
       }
