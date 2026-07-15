@@ -31,7 +31,7 @@ else if (lineRight < lim)
     sparki.moveRight();
   }
 
-else if ( lineRight > lim && lineLeft > lim && lineCenter > lim)//voltou pro ponto de origem
+else //voltou pro ponto de origem
   { 
     sparki.moveStop();
     sparki.gripperOpen();
